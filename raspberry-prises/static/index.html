@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prises</title>
+<style>
+  :root { --bg:#f4f4f2; --card:#fff; --text:#1d1d1b; --muted:#77756f; --on:#2e9d5b; --off:#c9c6bf; --err:#c0392b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#161615; --card:#222220; --text:#eeece6; --muted:#9a978f; --off:#4a4844; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+  main { max-width:640px; margin:0 auto; padding:24px 16px; }
+  h1 { font-size:1.4rem; margin:0 0 4px; }
+  #status { color:var(--muted); font-size:.9rem; min-height:1.2em; margin-bottom:20px; }
+  #status.err { color:var(--err); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; }
+  button.outlet { background:var(--card); color:var(--text); border:2px solid var(--off); border-radius:14px;
+    padding:22px 12px; font:inherit; cursor:pointer; text-align:center; transition:border-color .15s, transform .05s; }
+  button.outlet:active { transform:scale(.98); }
+  button.outlet .name { font-weight:600; font-size:1.05rem; }
+  button.outlet .dot { width:46px; height:46px; border-radius:50%; margin:0 auto 12px; background:var(--off); transition:background .15s; }
+  button.outlet .lbl { color:var(--muted); font-size:.85rem; margin-top:4px; }
+  button.outlet.on { border-color:var(--on); }
+  button.outlet.on .dot { background:var(--on); box-shadow:0 0 18px var(--on); }
+  .all { display:flex; gap:12px; margin-top:20px; }
+  .all button { flex:1; padding:14px; border-radius:10px; border:1px solid var(--off); background:var(--card); color:var(--text); font:inherit; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:wait; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Prises du Raspberry</h1>
+  <div id="status">Connexion…</div>
+  <div class="grid" id="grid"></div>
+  <div class="all">
+    <button id="allOn">Tout allumer</button>
+    <button id="allOff">Tout éteindre</button>
+  </div>
+</main>
+<script>
+const grid = document.getElementById('grid');
+const status = document.getElementById('status');
+let busy = false;
+
+function setStatus(msg, err) { status.textContent = msg; status.className = err ? 'err' : ''; }
+
+function render(state) {
+  grid.innerHTML = '';
+  for (const o of state.outlets) {
+    const b = document.createElement('button');
+    b.className = 'outlet' + (o.on ? ' on' : '');
+    b.innerHTML = '<div class="dot"></div><div class="name"></div><div class="lbl"></div>';
+    b.querySelector('.name').textContent = o.name;
+    b.querySelector('.lbl').textContent = o.on ? 'Allumée' : 'Éteinte';
+    b.onclick = () => send('/api/outlet/' + o.id, { on: !o.on });
+    grid.appendChild(b);
+  }
+  setStatus(state.mock ? 'Mode simulation (pas de GPIO détecté)' : 'Connecté');
+}
+
+async function send(url, body) {
+  if (busy) return;
+  busy = true;
+  document.querySelectorAll('button').forEach(b => b.disabled = true);
+  try {
+    const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error((await r.json()).error || r.status);
+    render(await r.json());
+  } catch (e) {
+    setStatus('Erreur : ' + e.message, true);
+  } finally {
+    busy = false;
+    document.querySelectorAll('button').forEach(b => b.disabled = false);
+  }
+}
+
+async function refresh() {
+  if (busy) return;
+  try {
+    const r = await fetch('/api/state');
+    render(await r.json());
+  } catch (e) {
+    setStatus('Raspberry injoignable — vérifier le câble Ethernet', true);
+  }
+}
+
+document.getElementById('allOn').onclick = () => send('/api/all', { on: true });
+document.getElementById('allOff').onclick = () => send('/api/all', { on: false });
+refresh();
+setInterval(refresh, 3000);
+</script>
+</body>
+</html>
