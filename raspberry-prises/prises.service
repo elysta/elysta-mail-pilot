@@ -1,0 +1,12 @@
+[Unit]
+Description=Pilotage des 4 prises (relais GPIO)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/prises/server.py
+WorkingDirectory=/opt/prises
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

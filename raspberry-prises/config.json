@@ -1,0 +1,11 @@
+{
+  "port": 8080,
+  "active_high": false,
+  "restore_state_on_boot": true,
+  "outlets": [
+    { "name": "Prise 1", "gpio": 17 },
+    { "name": "Prise 2", "gpio": 27 },
+    { "name": "Prise 3", "gpio": 22 },
+    { "name": "Prise 4", "gpio": 23 }
+  ]
+}
