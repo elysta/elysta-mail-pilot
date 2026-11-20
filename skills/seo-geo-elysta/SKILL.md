@@ -108,7 +108,7 @@ Applique dans l'ordre, arrête-toi à la première branche qui explique ≥ 70 %
 - Search Console : `sc-domain:elysta.be`, `sc-domain:elysta-atelier.be`, `sc-domain:elysta.fr`,
   `sc-domain:elysta.nl`, `sc-domain:elysta.de` (outil `query_search_analytics`, `list_sitemaps`, `inspect_url`).
 - GA4 : elysta.be = `properties/399724581` ; elysta-atelier.be = `properties/420310581`
-  (une seconde propriété `543658770` existe sous le compte Google Ads : à clarifier, ne pas mélanger).
+  (la propriété `543658770` sous le compte Google Ads ne reçoit aucune donnée — vérifié le 20/11/2026 : l'ignorer).
 - Logs : serveur nginx auto-hébergé (les deux sites sont des builds Astro statiques). Chemin et rétention
   des logs **à confirmer** — identifier le gestionnaire réel par SSH avant toute manipulation.
 - Odoo : boutique/compte client (`elysta.odoo.com/my`), catalogue, prix, devis — source de vérité des faits produits.

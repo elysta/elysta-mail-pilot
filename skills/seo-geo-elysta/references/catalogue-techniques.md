@@ -518,9 +518,10 @@ partenaires (ex. réalisations professionnelles AT). Aucun faux avis, aucune inc
 ### T61 — Google Business Profile — P1 — DOC
 1. Régime : atelier qui reçoit sur rendez-vous avec enseigne + livraisons/poses chez le client → **hybride** (adresse
    affichée + zones de service par commune, ≤ 20 zones, ≤ ~2 h de trajet). Sans enseigne permanente → zone de service, adresse masquée.
-2. **Deux marques à la même adresse** : vérifier dans les règles Google si deux fiches distinctes sont admissibles
-   (activités réellement distinctes, nom, catégorie et téléphone distincts recommandés). **Non vérifié** dans cette recherche —
-   une fiche dupliquée ou non conforme peut être suspendue. Décision d'Erwan.
+2. **Deux marques à la même adresse** (règles vérifiées le 20/11/2026, answer/3038177) : une fiche par marque seulement
+   si les marques fonctionnent indépendamment ; jamais de nom combiné ; enseigne permanente au nom affiché ; téléphone relié
+   à l'établissement (le partage d'un numéro n'est ni autorisé ni interdit explicitement). Décision retenue : une fiche
+   Elysta Atelier ; pas de seconde fiche tant qu'enseigne et téléphone sont communs. Activité sur rendez-vous : pas d'horaires affichés.
 3. Catégorie principale la plus précise (enquête Whitespark 2026 : premier facteur — opinion de 47 praticiens, contestée
    par Localo sur 16 098 fiches). Nom légal exact, sans mots-clés ajoutés.
 4. Photos d'atelier, de machines, de réalisations ; produits ; services ; avis sollicités sans filtre ni incitation ; réponse à tous.

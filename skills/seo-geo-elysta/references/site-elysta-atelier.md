@@ -29,7 +29,15 @@ Pages qui mènent au carnet : `/professionnels/`, `/agencement-bureaux-sur-mesur
 
 ## Volumes (GSC, 18/08-16/11/2026)
 Belgique 181 clics / 12 407 impressions / **position moyenne 20,7** ; France 3 clics. ≈ 60 clics/mois.
-GA4 : `properties/420310581` (une autre propriété `543658770` existe sous le compte Google Ads — clarifier laquelle porte les conversions).
+GA4 : `properties/420310581` (vérifié : c'est la bonne ; `543658770` ne reçoit aucune donnée).
+
+### Sources de trafic (GA4, 90 jours au 19/11/2026) — FAIT
+google 185 sessions (1 lead), direct 140 (1), **chatgpt.com 50 (1 lead)**, elysta.be 19, bing 13, ecosia 9, gemini 2.
+Événements : `generate_lead` 3, `cta_click` 40, `budget_view` 31, `project_view` 26, `phone_click` 2.
+Pages d'arrivée notables : Google → `/menuisier-sur-mesure-liege` 14 sessions **et le seul lead Google**, `/escaliers` 13,
+`/menuisier-sur-mesure-bruxelles` 10, `-huy` 9. ChatGPT → accueil 18, `/escalier-sur-mesure-bruxelles` 8,
+`/realisations/bureau-chene-massif` 4, `/escalier-sur-mesure-andenne` 1 (1 lead).
+Anciennes URLs Odoo : `/shop*` et `/web/login` répondent 410 (retrait volontaire), le reste 404.
 À ce volume, presque rien n'est mesurable statistiquement : l'Atelier se pilote surtout par T31 (comment les clients
 nous ont connus), T28 (présence dans les réponses IA) et les contacts qualifiés.
 
@@ -37,6 +45,14 @@ nous ont connus), T28 (présence dans les réponses IA) et les contacts qualifi�
 1. **12 pages villes** : `escalier-sur-mesure-{andenne, brabant-wallon, bruxelles, huy, liege, namur}` et
    `menuisier-sur-mesure-{mêmes 6}`. Risque doorway (T63, **P1**) et cannibalisation avec `/escaliers/` et
    `/menuiserie-interieure-sur-mesure-belgique/` (T08). Audit de substitution page par page avant toute nouvelle page villes.
+   **Nuance mesurée** : ces pages sont les principales portes d'entrée Google et ChatGPT et ont produit 2 des 3 leads.
+   Il ne s'agit donc pas de les supprimer mais de les **enrichir** (réalisations réellement livrées dans la zone, contraintes
+   locales, témoignages) pour qu'elles passent le test de substitution. Aucune nouvelle page villes.
+6. **Fiche Google Business Profile** (règles vérifiées le 20/11/2026, support.google.com/business/answer/3038177) :
+   deux fiches à une même adresse ne sont admises que si les marques « operate independently » ; il faut une enseigne
+   permanente au nom affiché ; le téléphone doit être relié à l'établissement ; une activité sur rendez-vous ne doit
+   pas afficher d'horaires. Atelier, équipe et téléphone communs → **une seule fiche, Elysta Atelier, régime hybride**
+   (adresse + zones de service). Une fiche Elysta séparée seulement avec enseigne et téléphone distincts.
 2. Position moyenne 20,7 : la majorité des impressions sont en page 2-3. Prioriser quelques requêtes à forte valeur
    (T20) plutôt que d'élargir.
 3. Ambiguïté de marque « Elysta » avec le mobilier enfant (T35) : chaque page clé doit dire « Elysta Atelier, menuiserie sur mesure ».
